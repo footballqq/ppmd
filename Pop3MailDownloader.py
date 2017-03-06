@@ -60,18 +60,20 @@ def get_emails(config):
                             filename = filenamedecode[0][0].decode(code)
                         else :
                             filename = filenamedecode[0][0]
-#                        print(filename)
+#                       print(filename)
+                        filename = os.path.join(savepath, filename)
                         while  os.path.exists(filename)==True:
                             filename_tmp, file_extension = os.path.splitext(filename)
                             filename = filename_tmp + '1' + file_extension
                         logging.debug("saving file : {0:s} ".format(filename))
-                        fp = open(os.path.join(savepath, filename), 'wb')
+                        fp = open(filename, 'wb')
                         fp.write(part.get_payload(decode=1))
                         fp.close
                     payload= parsed_msg.get_payload(decode=True)
 #                    print(payload)
                 if deletefromserver == 1:
                     p.dele(int(msg_num.decode("utf-8")))
+        p.quit()
         time.sleep(int(waitingtime))
     pass
 
