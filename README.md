@@ -9,3 +9,21 @@ http://blog.sina.com.cn/s/blog_4deeda2501016eyf.html
 
 Python接收和转发邮件
 http://www.logme.cn/blog/48/receive_and_forward_mail_using_python/
+
+usage:
+python Pop3MailDownloader.py configfile
+
+configfile:
+#config sample
+
+[MailDownloader]
+mailserver = mail.xxx.com
+user = foo@mail.xxx.com
+password = foo123
+savepath = d:\temp\download\
+
+#1 will delete from server, 0 wont
+deletefromserver = 0
+
+#waiting time for each round
+waitingtime = 5
