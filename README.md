@@ -1,4 +1,6 @@
 # ppmd
+python 3.5, windows test
+
 python  pop3 mail downloader, download attachments from pop3 server and save all to a directory.
 
 refs:
