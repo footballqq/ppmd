@@ -76,7 +76,7 @@ def get_emails(config):
                     if deletefromserver == 1:
                         p.dele(int(msg_num.decode("utf-8")))
             p.quit()
-        except TimeoutError, Argument:
+        except TimeoutError as Argument:
             logging.debug(Argument)
         except:
             logging.debug("Unexpected error: {0:s}".format(sys.exc_info()[0]))
