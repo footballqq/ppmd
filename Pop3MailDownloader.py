@@ -22,7 +22,7 @@ def get_emails(config):
     user = config.get('MailDownloader', 'user')
     password = config.get('MailDownloader', 'password')
     mailserver = config.get('MailDownloader', 'mailserver')
-    deletefromserver = config.get('MailDownloader', 'deletefromserver')
+    deletefromserver = int(config.get('MailDownloader', 'deletefromserver'))
     waitingtime  = config.get('MailDownloader', 'waitingtime')
     logging.debug('downloading..............')
 
