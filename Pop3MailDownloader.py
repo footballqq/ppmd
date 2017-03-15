@@ -31,12 +31,13 @@ def get_emails(config):
             logging.debug('fetch at {0:s}'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))))
             print('fetch at {0:s}'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))))
             p = poplib.POP3(mailserver)
-    #        print(p.getwelcome())
+            print(p.getwelcome())
             p.user(user)
             p.pass_(password)
-    #        print("This mailbox has %d messages, totaling %d bytes." % p.stat())
+            print("This mailbox has %d messages, totaling %d bytes." % p.stat())
+            logging.debug("This mailbox has %d messages, totaling %d bytes." % p.stat())
             msg_list = p.list()
-    #       print(msg_list)
+#            print(msg_list)
             if not msg_list[0].decode("utf-8").startswith('+OK'):
                     print("error !!!!")
                     logging.debug("error download mail list.")
@@ -48,7 +49,18 @@ def get_emails(config):
                     if resp[0].decode("utf-8").startswith('+OK'):
                         #print resp, '=======================\n'
                         respstr =   [ x.decode('utf-8') for x in resp[1]]
+                        #print("test1")
                         parsed_msg = email.message_from_string('\n'.join(respstr))
+                        #print("test2")
+                        subjectwithcode = email.header.decode_header(parsed_msg['Subject'])
+                        code = subjectwithcode[0][1]
+                        if code != None :
+                            subject = subjectwithcode[0][0].decode(code)
+                        else :
+                            subject = subjectwithcode[0][0]
+                        #print("test3")
+                        print(subject)
+                        logging.debug(subject)
                         for part in parsed_msg.walk():
     #                        print((part.get_content_type()))
                             if part.get_content_maintype() == 'multipart':
@@ -62,7 +74,7 @@ def get_emails(config):
                                 filename = filenamedecode[0][0].decode(code)
                             else :
                                 filename = filenamedecode[0][0]
-    #                       print(filename)
+                            print(filename)
                             filename = os.path.join(savepath, filename)
                             while  os.path.exists(filename)==True:
                                 filename_tmp, file_extension = os.path.splitext(filename)
@@ -75,6 +87,7 @@ def get_emails(config):
     #                    print(payload)
                     if deletefromserver == 1:
                         p.dele(int(msg_num.decode("utf-8")))
+            print("quit")
             p.quit()
         except TimeoutError as Argument:
             logging.debug(Argument)
@@ -82,6 +95,7 @@ def get_emails(config):
             logging.debug("Unexpected error: {0:s}".format(sys.exc_info()[0]))
         else:
             logging.debug('finished at {0:s}'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))))
+        print("sleep")
         time.sleep(int(waitingtime))
     pass
 
