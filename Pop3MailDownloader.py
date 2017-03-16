@@ -82,7 +82,7 @@ def get_emails(config):
                             logging.debug("saving file : {0:s} ".format(filename))
                             fp = open(filename, 'wb')
                             fp.write(part.get_payload(decode=1))
-                            fp.close
+                            fp.close()
                         payload= parsed_msg.get_payload(decode=True)
     #                    print(payload)
                     if deletefromserver == 1:
@@ -91,8 +91,12 @@ def get_emails(config):
             p.quit()
         except TimeoutError as Argument:
             logging.debug(Argument)
-        except:
-            logging.debug("Unexpected error: {0:s}".format(sys.exc_info()[0]))
+        except Exception as e:
+            #pass
+            logging.debug("Unexpected error:") # {0:s}".format(sys.exc_info()[0]))
+            logging.error(traceback.format_exc())
+            logging.error(e.__doc__)
+            logging.error(e.message)
         else:
             logging.debug('finished at {0:s}'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))))
         print("sleep")
