@@ -9,14 +9,14 @@ https://gist.github.com/baali/2633554 baali@github
 
 useful links:
 https://yuji.wordpress.com/2011/06/22/python-imaplib-imap-example-with-gmail/
-https://pymotw.com/2/imaplib/
 http://www.cnblogs.com/yhlx/archive/2013/03/22/2975817.html
+https://pymotw.com/2/imaplib/
 
-pythonÊÕĞÂÓÊ¼ş£¨½â¾öÁËÖĞÎÄ±àÂë£¬¿ÉÊÕ¸½¼şºÍ²é¿´ÓÊ¼şĞÅÏ¢£©, 
+pythonæ”¶æ–°é‚®ä»¶ï¼ˆè§£å†³äº†ä¸­æ–‡ç¼–ç ï¼Œå¯æ”¶é™„ä»¶å’ŒæŸ¥çœ‹é‚®ä»¶ä¿¡æ¯ï¼‰, 
 Python Receive new mail and save attachment, solved Chinese code problem
 http://blog.sina.com.cn/s/blog_4deeda2501016eyf.html
 
-Python½ÓÊÕºÍ×ª·¢ÓÊ¼ş
+Pythonæ¥æ”¶å’Œè½¬å‘é‚®ä»¶
 http://www.logme.cn/blog/48/receive_and_forward_mail_using_python/
 
 usage:
