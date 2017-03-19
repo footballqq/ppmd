@@ -33,7 +33,7 @@ def get_emails(config):
     password = config.get('MailDownloader', 'password')
     mailserver = config.get('MailDownloader', 'mailserver')
     deletefromserver = int(config.get('MailDownloader', 'deletefromserver'))
-    waitingtime  = config.get('MailDownloader', 'waitingtime')
+#    waitingtime  = config.get('MailDownloader', 'waitingtime')
     logging.debug('downloading..............')
 
     try:
@@ -42,25 +42,27 @@ def get_emails(config):
         connection = imaplib.IMAP4(mailserver)
         connection.login(user, password)
         typ, data = connection.list()
-        print('Response code:', typ)
-        for line in data:
-            print('Server response:', line)
-            flags, delimiter, mailbox_name = parse_list_response(line)
-            print('Parsed response:', (flags, delimiter, mailbox_name))
+        logging.debug('Response code:{0:s}'.format(typ))
+#        print('Response code:', typ)
+#        for line in data:
+#            print('Server response:', line)
+#            flags, delimiter, mailbox_name = parse_list_response(line)
+#            print('Parsed response:', (flags, delimiter, mailbox_name))
         connection.select('Inbox')
         #typ, data = connection.search(None, 'ALL')
         typ, data = connection.uid('search', None, 'ALL')
         if typ != 'OK':
             print('Error searching Inbox.')
+            logging.debug('Error searching Inbox.')
             raise
 
         # Iterating over all emails
         for msgId in data[0].split():
-
             #typ, messageParts = connection.fetch(msgId, '(RFC822)')
             typ, messageParts = connection.uid('fetch', msgId, '(RFC822)')
             if typ != 'OK':
                 print('Error fetching mail.')
+                logging.debug('Error fetching mail.')
                 raise
 
             emailBody = messageParts[0][1]
@@ -109,6 +111,7 @@ def get_emails(config):
         connection.logout()
 
 #empty trash?
+        logging.debug('empty trash')
         connection = imaplib.IMAP4(mailserver)
         connection.login(user, password)
         connection.select('Trash')
@@ -116,6 +119,7 @@ def get_emails(config):
         typ, data = connection.uid('search', None, 'ALL')
         if typ != 'OK':
             print('Error searching Trash.')
+            logging.debug('Error searching Trash.')
             raise
 
         # Iterating over all emails
@@ -133,8 +137,6 @@ def get_emails(config):
         logging.debug("Unexpected error: {0:s}".format(str(e)))
     else:
         logging.debug('finished at {0:s}'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))))
-    print("sleep")
-#    time.sleep(int(waitingtime))
 
 def main():
 #    global cfgfile
