@@ -4,7 +4,7 @@ python 3.5, windows test
 python  pop3/IMAP mail downloader, download attachments from pop3/IMAP server and save all to a directory.
 
 refs: used code of:
-<https://zh-cn.facebook.com/notes/eashwar-raghunathan/code-to-download-all-email-attachments-from-your-pop3-email-account/472554896150795/>
+<https://zh-cn.facebook.com/notes/eashwar-raghunathan/code-to-download-all-email-attachments-from-your-pop3-email-account/472554896150795/>  
 <https://gist.github.com/baali/2633554 baali@github>
 
 useful links:
