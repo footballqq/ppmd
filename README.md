@@ -10,7 +10,7 @@ https://gist.github.com/baali/2633554 baali@github
 useful links:
 https://yuji.wordpress.com/2011/06/22/python-imaplib-imap-example-with-gmail/
 https://pymotw.com/2/imaplib/
-
+http://www.cnblogs.com/yhlx/archive/2013/03/22/2975817.html
 
 python收新邮件（解决了中文编码，可收附件和查看邮件信息）, 
 Python Receive new mail and save attachment, solved Chinese code problem
