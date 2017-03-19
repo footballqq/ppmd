@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+#-*- coding: utf-8 -*-
+#@Filename : IMAPMailDownloader
+#@Date : 2017-03-19-09-37
+#@Poject: emaildownloader
+#@AUTHOR : footballqq
+
+
 import poplib
 import imaplib
 import email
