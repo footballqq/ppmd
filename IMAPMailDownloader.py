@@ -144,7 +144,7 @@ def main():
         cfgfile = "maildlcfg.ini"
         config.read(cfgfile)
     else:
-        print("please use config file: python Pop3MailDownloader.py maildlcfg.ini")
+        print("please use config file: python IMAPMailDownloader.py maildlcfg.ini")
         sys.exit(0)
 
     logfile = 'download.log'
