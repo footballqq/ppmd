@@ -1,31 +1,30 @@
 # ppmd
 python 3.5, windows test
 
-python  pop3 mail downloader, download attachments from pop3 server and save all to a directory.
+python  pop3/IMAP mail downloader, download attachments from pop3/IMAP server and save all to a directory.
 
-refs:
-https://zh-cn.facebook.com/notes/eashwar-raghunathan/code-to-download-all-email-attachments-from-your-pop3-email-account/472554896150795/
+refs: used code of:  
+https://zh-cn.facebook.com/notes/eashwar-raghunathan/code-to-download-all-email-attachments-from-your-pop3-email-account/472554896150795/  
+https://gist.github.com/baali/2633554 baali@github  
 
-pythonÊÕĞÂÓÊ¼ş£¨½â¾öÁËÖĞÎÄ±àÂë£¬¿ÉÊÕ¸½¼şºÍ²é¿´ÓÊ¼şĞÅÏ¢£©, Python Receive new mail and save attachment, solved Chinese code problem
-http://blog.sina.com.cn/s/blog_4deeda2501016eyf.html
+useful links:
+https://yuji.wordpress.com/2011/06/22/python-imaplib-imap-example-with-gmail/  
+http://www.cnblogs.com/yhlx/archive/2013/03/22/2975817.html  
+https://pymotw.com/2/imaplib/  
 
-Python½ÓÊÕºÍ×ª·¢ÓÊ¼ş
+pythonæ”¶æ–°é‚®ä»¶ï¼ˆè§£å†³äº†ä¸­æ–‡ç¼–ç ï¼Œå¯æ”¶é™„ä»¶å’ŒæŸ¥çœ‹é‚®ä»¶ä¿¡æ¯ï¼‰,   
+Python Receive new mail and save attachment, solved Chinese code problem  
+http://blog.sina.com.cn/s/blog_4deeda2501016eyf.html  
+
+Pythonæ¥æ”¶å’Œè½¬å‘é‚®ä»¶  
 http://www.logme.cn/blog/48/receive_and_forward_mail_using_python/
 
-usage:
-python Pop3MailDownloader.py configfile
+usage:  
+python Pop3MailDownloader.py configfile  
+will download by time interval in configfile  
 
-configfile:
-#config sample
+python IMAPMailDownloader.py configfile  
+download once  
 
-[MailDownloader]
-mailserver = mail.xxx.com
-user = foo@mail.xxx.com
-password = foo123
-savepath = d:\temp\download\
+configfile: maildlcfg.ini
 
-#1 will delete from server, 0 wont
-deletefromserver = 0
-
-#waiting time for each round
-waitingtime = 5
