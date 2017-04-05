@@ -54,12 +54,16 @@ def get_emails(config):
                         #print("test2")
                         subjectwithcode = email.header.decode_header(parsed_msg['Subject'])
                         code = subjectwithcode[0][1]
+                        #print(code)
                         if code != None :
-                            subject = subjectwithcode[0][0].decode(code)
+                            #if code == 'gb2312' :
+                            #    code = 'gbk'
+                            subject = subjectwithcode[0][0].decode(code, errors = 'ignore')
                         else :
                             subject = subjectwithcode[0][0]
                         #print("test3")
-                        print(subject)
+                        #subject = subject.encode('gbk',errors = 'ignore')
+                        #print(subject)
                         logging.debug(subject)
                         for part in parsed_msg.walk():
     #                        print((part.get_content_type()))
@@ -74,7 +78,8 @@ def get_emails(config):
                                 filename = filenamedecode[0][0].decode(code)
                             else :
                                 filename = filenamedecode[0][0]
-                            print(filename)
+                            #print(filename)
+                            #filename = filename.encode('gbk', errors = 'ignore')
                             filename = os.path.join(savepath, filename)
                             while  os.path.exists(filename)==True:
                                 filename_tmp, file_extension = os.path.splitext(filename)
@@ -93,8 +98,12 @@ def get_emails(config):
             logging.debug(Argument)
         except Exception as e:
             #pass
-            logging.debug("Unexpected error:") # {0:s}".format(sys.exc_info()[0]))
-            logging.error(traceback.format_exc())
+            if sys.exc_info()[0] is None:
+                logging.debug("Unexpected error: value none") # {0:s}".format(sys.exc_info()[0]))
+            else:
+                pass # logging.debug("Unexpected error:  {0:s}".format(sys.exc_info()[0]))
+            #logging.error(traceback.format_exc())
+            logging.exception('Got exception on main handler')
             logging.error(e.__doc__)
             logging.error(e.message)
         else:
@@ -113,7 +122,8 @@ def main():
         print("please use config file: python Pop3MailDownloader.py maildlcfg.ini")
         sys.exit(0)
     logfile = 'download.log'
-    logging.basicConfig(filename=logfile, level=logging.DEBUG)
+    logging.basicConfig(filename=logfile, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.DEBUG)
+    #logging.Formatter(fmt='%(asctime)s.%(msecs)03d',datefmt='%Y-%m-%d,%H:%M:%S')
     logging.debug('log start at {0:s}'.format(datetime.date.today().strftime("%Y%m%d")) )
     get_emails(config)
 
