@@ -90,6 +90,9 @@ def get_emails(config):
                     fileName = filenamedecode[0][0].decode(code)
                 else :
                     fileName = filenamedecode[0][0]
+                # remove unprintable char or invalid char for filenames.
+                fileName = re.sub('[^\w\s-]', '.', fileName).strip().lower()
+
                 print(fileName)
 
                 if bool(fileName):
