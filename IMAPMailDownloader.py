@@ -16,7 +16,7 @@ import logging
 import datetime
 import time
 import re
-
+import re
 #https://pymotw.com/2/imaplib/
 #https://gist.github.com/baali/2633554 baali@github
 #https://yuji.wordpress.com/2011/06/22/python-imaplib-imap-example-with-gmail/
