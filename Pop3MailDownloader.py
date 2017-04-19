@@ -78,9 +78,12 @@ def get_emails(config):
                                 filename = filenamedecode[0][0].decode(code)
                             else :
                                 filename = filenamedecode[0][0]
-                            #remove unprintable char or invalid char for filenames.
                             filename = re.sub('[^\w\s-]', '.', filename).strip().lower()
-                            # print(filename)
+                            filename = filename.replace('\n','')
+                            filename = filename.replace('\r','')
+                            filename = filename.replace('\t','')
+                            print(filename)
+                            #filename = filename.encode('gbk', errors = 'ignore')
                             filename = os.path.join(savepath, filename)
                             while  os.path.exists(filename)==True:
                                 filename_tmp, file_extension = os.path.splitext(filename)
