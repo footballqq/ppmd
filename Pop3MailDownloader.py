@@ -46,7 +46,7 @@ def get_emails(config):
             for msg in msg_list[1]:
                     msg_num, _ = msg.split()
                     logging.debug("processing No.{} / {} msg".format(msg_num, len(msg_list[1])))
-                    print("processing No.{} / {} msg".format(msg_num, len(msg_list[1])))
+                    print("processing No.{} / {} msg".format(int(msg_num.decode("utf-8")), len(msg_list[1])))
                     resp = p.retr(int(msg_num.decode("utf-8")))
                     if resp[0].decode("utf-8").startswith('+OK'):
                         #print resp, '=======================\n'
