@@ -42,8 +42,12 @@ def get_emails(config):
                     print("error !!!!")
                     logging.debug("error download mail list.")
                     exit(1)
-
+            i = 0
             for msg in msg_list[1]:
+                    i = i + 1
+                    print(i)
+                    if i > 10:
+                        break
                     msg_num, _ = msg.split()
                     logging.debug("processing No.{} / {} msg".format(msg_num, len(msg_list[1])))
                     print("processing No.{} / {} msg".format(int(msg_num.decode("utf-8")), len(msg_list[1])))
