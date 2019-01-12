@@ -12,7 +12,7 @@ https://yuji.wordpress.com/2011/06/22/python-imaplib-imap-example-with-gmail/
 http://www.cnblogs.com/yhlx/archive/2013/03/22/2975817.html  
 https://pymotw.com/2/imaplib/  
 
-python收新邮件（解决了中文编码，可收附件和查看邮件信息）,   
+python收新邮件（解决了中文编码，可收附件和查看邮件信息）,  但仍然有部分特殊符号无法处理。 
 Python Receive new mail and save attachment, solved Chinese code problem  
 http://blog.sina.com.cn/s/blog_4deeda2501016eyf.html  
 
